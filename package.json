@@ -1,7 +1,7 @@
 {
 	"name": "drill",
 	"version": "0.0.1",
-	"description": "Query builder to find complex objects for matches",
+	"description": "Find matches in complex objects",
 	"keywords": [""],
 	"repository": "git://github.com/shanebo/drill.git",
 	"author": "Shane Thacker <shane@steadymade.com>",
