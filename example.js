@@ -18,67 +18,87 @@ var stuff = {
 		{
 			id: 'yo',
 			name: 'shane',
+			last: 'jackson',
 			age: 33,
 			birthday: '07/31/1980'
 		},
 		{
+			id: 'nope',
+			name: 'jack',
+			last: 'jackson',
+			age: 33,
+			birthday: '09/06/1976'
+		},
+		{
 			id: 'nice',
 			name: 'zack',
+			last: 'jackson',
 			age: 21,
 			birthday: '07/31/1980'
 		},
 		{
 			id: 'wha',
 			name: 'henry',
+			last: 'jackson',
 			age: 102,
 			birthday: '07/31/1980'
 		},
 		{
 			id: 'wha',
 			name: 'henry',
+			last: 'jackson',
 			age: 13,
-			birthday: '07/31/1980'
-		},
-		{
-			id: 'wha',
-			name: 'henry',
-			age: 19,
 			child: {
-				age: 12,
-				first: 'chyrese',
-				last: 'thacker'
+				age: 17,
+				first: 'brandon',
+				last: 'maple'
 			},
 			birthday: '07/31/1980'
 		},
 		{
 			id: 'wha',
 			name: 'henry',
+			last: 'jackson',
+			age: 19,
+			child: {
+				age: 12,
+				first: 'sherry',
+				last: 'simpson'
+			},
+			birthday: '07/31/1980'
+		},
+		{
+			id: 'wha',
+			name: 'henry',
+			last: 'zach',
 			age: 30,
 			child: {
 				age: 5,
 				first: 'lanny',
-				last: 'thacker'
+				last: 'jackson'
 			},
 			birthday: '07/31/1980'
 		},
 		{
 			id: 'wha',
 			name: 'henry',
+			last: 'simpson',
 			age: 45,
 			child: {
-				age: 33,
+				age: 19,
 				first: 'lanny',
-				last: 'thacker'
+				last: 'jackson'
 			},
 			birthday: '07/31/1980'
 		},
 		{
 			id: 'wha',
 			name: 'henry',
+			last: 'anderson',
 			child: {
-				age: 35,
+				age: 24,
 				first: 'shane',
-				last: 'thacker'
+				last: 'jackson'
 			},
 			age: 45,
 			birthday: '07/31/1980'
@@ -86,13 +106,25 @@ var stuff = {
 		{
 			id: 'jack',
 			name: 'black',
+			last: 'piper',
 			age: 98,
+			child: {
+				age: 33,
+				first: 'brandon',
+				last: 'maple'
+			},
 			birthday: '05/17/1980'
 		},
 		{
 			id: 'mama',
-			name: 'thacker',
+			name: 'jennifer',
+			last: 'jackson',
 			age: 10,
+			child: {
+				age: 10,
+				first: 'lydia',
+				last: 'maple'
+			},
 			birthday: '01/02/1949'
 		}
 	],
@@ -111,6 +143,12 @@ console.log('\n');
 console.log('--------------');
 console.log('Results properties right at root');
 console.log(db.get('hello'));
+
+
+console.log('\n');
+console.log('--------------');
+console.log('Get the 3rd item in the collection array');
+console.log(db.in('collection').get(3));
 
 
 console.log('\n');
@@ -158,8 +196,7 @@ console.log('--------------');
 console.log('Results in collection where birthday is 07/31/1980 ordered by age and limited to 5 results');
 console.log(db.in('collection').where({
 	child: {
-//		first: 'lanny',
-		last: 'thacker'
+		last: 'jackson'
 	}
 }).order('last').select());
 
@@ -179,18 +216,55 @@ console.log(db.in('collection').where({
 console.log('\n');
 console.log('--------------');
 console.log('Results in collection where child.age is less than 33, ordered by child.age, and limited to 5 results');
+console.log(db.in('why.resources').findOne({
+	id: '543'
+}));
+
+
+console.log('\n');
+console.log('--------------');
+console.log('Results in collection where child.age is less than 33, ordered by child.age, and limited to 5 results');
 console.log(db.in('collection').where({
 	child: {
 		age: function(value){
 			return value <= 50;
 		}
 	}
-}).order('child.age').select(5));
+}).order('child.age').select(3));
 
 
 console.log('\n');
 console.log('--------------');
-console.log('Results in collection where child.age is less than 33, ordered by child.age, and limited to 5 results');
-console.log(db.in('why.resources').findOne({
-	id: '543'
-}));
+console.log('Results in collection where last is "jackson" and child.age is <= 20 and child.last is "maple" ordered by child.age, and limited to 5 results');
+console.log(db.in('collection').where({
+	last: 'jackson',
+	child: {
+		age: function(value){
+			return value <= 20;
+		},
+		last: 'maple'
+	}
+}).order('child.age').select(5));
+
+
+
+console.log('\n');
+console.log('--------------');
+console.log('TESTING');
+console.log(db.in('collection').order('last').select());
+
+
+console.log('\n');
+console.log('\n');
+console.log('\n');
+console.log('\n');
+console.log('\n');
+console.log('-----------------------------------------------------------------------------------------');
+console.log('Drill in "collection" where "age" is less than 50, ordered by child first, and limit to 5 results');
+console.log(db.in('collection').where({
+	child: {
+		age: function(value){
+			return value <= 50;
+		}
+	}
+}).order('age').select());
