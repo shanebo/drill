@@ -10,6 +10,12 @@ console.log('Server running at http://127.0.0.1:9999/');
 
 var stuff = {
 	'hello': 'world',
+	'people': {
+		jack: {
+			'2014/07/31': 'worked',
+			'frost': 'bob dylan'
+		}
+	},
 	'why': {
 		date: '2014/07/31',
 		resources: [{id: '123'}, {id: '543'}]
@@ -254,10 +260,7 @@ console.log('TESTING');
 console.log(db.in('collection').order('last').select());
 
 
-console.log('\n');
-console.log('\n');
-console.log('\n');
-console.log('\n');
+
 console.log('\n');
 console.log('-----------------------------------------------------------------------------------------');
 console.log('Drill in "collection" where "age" is less than 50, ordered by child first, and limit to 5 results');
@@ -268,3 +271,10 @@ console.log(db.in('collection').where({
 		}
 	}
 }).order('age').select());
+
+
+
+console.log('\n');
+console.log('---------------------------------------');
+console.log('Drill in "people.jack" and get "frost"');
+console.log(db.in('people.jack').get('frost'));
