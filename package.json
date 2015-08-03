@@ -1,6 +1,6 @@
 {
 	"name": "drill",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Find matches in complex objects",
 	"keywords": [""],
 	"repository": "git://github.com/shanebo/drill.git",
