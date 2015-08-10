@@ -20,6 +20,29 @@ var stuff = {
 		date: '2014/07/31',
 		resources: [{id: '123'}, {id: '543'}]
 	},
+	index: {
+		{
+			id: 'yo',
+			name: 'shane',
+			last: 'jackson',
+			age: 33,
+			birthday: '07/31/1980'
+		},
+		{
+			id: 'nope',
+			name: 'jack',
+			last: 'jackson',
+			age: 33,
+			birthday: '09/06/1976'
+		},
+		{
+			id: 'nice',
+			name: 'zack',
+			last: 'jackson',
+			age: 21,
+			birthday: '07/31/1980'
+		},
+	},
 	collection: [
 		{
 			id: 'yo',
